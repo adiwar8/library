@@ -15,16 +15,7 @@ const db = mysql.createConnection({
 	  password: "abcd1234",
 	  database: "books",
 });
-// const db = mysql.createConnection({
-// 	host: "book-store.canh3xczde9q.us-west-2.rds.amazonaws.com",
-// 	  user: "admin",
-// 	  password: "NiggaWhere123!",
-// 	  database: "books",
-// });
 
-app.get("/", (req, res) => {
-  res.json("hello");
-});
 
 app.get("/books", (req, res) => {
   const q = "SELECT * FROM books";
@@ -38,14 +29,13 @@ app.get("/books", (req, res) => {
 });
 
 app.post("/books", (req, res) => {
-  const q = "INSERT INTO books(`title`, `desc`, `price`, `cover`, `author`) VALUES (?)";
+  const q = "INSERT INTO books(`title`,`author`,`description`,`price`) VALUES (?)";
   
   const values = [
     req.body.title,
+    req.body.author,
     req.body.desc,
     req.body.price,
-    req.body.cover,
-    req.body.author,
   ];
 
   db.query(q, [values], (err, data) => {
@@ -66,7 +56,7 @@ app.delete("/books/:id", (req, res) => {
 
 app.put("/books/:id", (req, res) => {
   const bookId = req.params.id;
-  const q = "UPDATE books SET `title`= ?, `desc`= ?, `price`= ?, `author`= ? WHERE id = ?";
+  const q = "UPDATE books SET `title`= ?, `description`= ?, `price`= ?, `author`= ? WHERE id = ?";
 
   const values = [
     req.body.title,
