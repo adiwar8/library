@@ -10,9 +10,9 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-	 host: "new-book-store.canh3xczde9q.us-west-2.rds.amazonaws.com",
+	 host: "web-db.czwhh69hr7aj.ap-southeast-2.rds.amazonaws.com",
 	  user: "admin",
-	  password: "NiggaWhere123!",
+	  password: "abcd1234",
 	  database: "books",
 });
 // const db = mysql.createConnection({
