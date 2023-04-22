@@ -21,7 +21,7 @@ const Add = () => {
     e.preventDefault();
     try {
       // await axios.post("http://localhost:8801/books", book);
-      await axios.post("http://54.185.200.109/api/books", book);
+      await axios.post("http://3.104.110.137/api/books", book);
       navigate("/");
     } catch (err) {
       console.log(err);
